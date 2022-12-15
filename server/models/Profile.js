@@ -19,7 +19,6 @@ const profileSchema = new Schema (
         song: {
             type: String,
             trim: true,
-
         },
         links: [
             {

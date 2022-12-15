@@ -22,7 +22,6 @@ const postSchema = new Schema (
         },
         comments: [commentSchema], //still need to make comment schema
         likes: [likeSchema],
-
     },
     {
         toJSON: {

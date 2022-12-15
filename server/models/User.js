@@ -35,12 +35,12 @@ const userSchema = new Schema(
                 ref: 'Post'
             }
         ],
-        notifications: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Notification'
-            }
-        ]
+        // notifications: [
+        //     {
+        //         type: Schema.Types.ObjectId,
+        //         ref: 'Notification'
+        //     }
+        // ]
     },
     {
         toJSON: {
@@ -68,6 +68,10 @@ userSchema.virtual('friendCount').get(function() {
 
 userSchema.virtual('postCount').get(function() {
     return this.posts.length;
+});
+
+userSchema.virtual('notificationCount').get(function() {
+    return this.notifications.length;
 });
 
 const User = Model('User', userSchema);
