@@ -1,0 +1,24 @@
+{
+  "name": "space-why",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ejackson1228/space-whY.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ejackson1228/space-whY/issues"
+  },
+  "homepage": "https://github.com/ejackson1228/space-whY#readme",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
