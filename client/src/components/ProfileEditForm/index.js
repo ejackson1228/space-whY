@@ -72,7 +72,15 @@ const profileForm = ({ user }) => {
                                     </button>
                                     &nbsp;
                                     <button onClick={onImageRemove}>Remove Image</button>
-                                    
+                                    {image && 
+                                    <div key={image} className="image-item">
+                                        <img src={image.data_url} alt="" width="100" />
+                                        <div className='image-item__btn-wrapper'>
+                                            <button onClick={() => onImageUpdate(image)}>Update</button>
+                                            <button onClick={() => onImageRemove(image)}>Remove</button>
+                                        </div>
+                                    </div>
+                                    }
                                 </div>
                             )}
                         </ImageUploading>
