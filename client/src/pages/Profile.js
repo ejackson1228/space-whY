@@ -54,11 +54,11 @@ const Profile = (props) => {
     };
 
     // click handler to view squids
-    const handleSquidsView = async () => {
-       try {
+    // const handleSquidsView = async () => {
+    //    try {
 
-       }
-    }
+    //    }
+    // }
 
     return(
         <div>
