@@ -38,6 +38,11 @@ const typeDefs = gql `
         createdAt: String
     }
 
+    type Like {
+        username: String
+        user_id: ID
+    }
+
     type Query {
         me: User
         users: [User]
@@ -46,17 +51,22 @@ const typeDefs = gql `
         inkling(_id: ID!): Inkling
     }
 
+    type Auth {
+        token: ID!
+        user: User
+    }
+
     type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         addInkling(inklingText: String!): Inkling
-        addProfile(user: User!): Profile
+        addProfile(user: ID!): Profile
         addComment(inklingId: ID!, commentBody: String!): Inkling
         addLike(inklingId: ID!, username: String!): Inkling
         addFriend(friendId: ID!): User
     }
 ` 
 // createdAt ^ might need a custom scalar type to query the date. https://stackoverflow.com/questions/49693928/date-and-json-in-type-definition-for-graphql
- post
+
 
 module.exports = typeDefs;

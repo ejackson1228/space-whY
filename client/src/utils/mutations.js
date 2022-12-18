@@ -56,3 +56,20 @@ mutation removeFriend($id: ID!) {
   }
 }
 `;
+
+export const ADD_PROFILE = gql `
+mutations addProfile($user: User!) {
+  addProfile(user: $user) {
+    user {
+      _id
+      username
+    }
+    avatar
+    bio
+    song
+    links
+    categories
+    createdAt
+  }
+}
+`
