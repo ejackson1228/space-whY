@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 
-const secret = process.env.secret;
+// const secret = process.env.SECRET;
+const secret = 'topsecretshhhhh';
 const expiration = 7 * 24 * 60 * 60; // user token will expire @ 1 week, requiring them to log in again 
 
 module.exports = {
