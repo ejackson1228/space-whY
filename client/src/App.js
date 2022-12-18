@@ -1,3 +1,6 @@
+import React, { useState } from 'react';
+import './App.css';
+import Header from './components/Header';
 import React from 'react';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -29,7 +32,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-          {/* <Header /> */}
+           <Header />
           <div className="container">
             <Routes>
               {/* <Home /> */}
