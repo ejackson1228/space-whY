@@ -15,10 +15,10 @@ const Feed = () => {
     return(
         <main>
             <div>
-                <h1>Feed</h1>
+                <h1>Weekly Ink</h1>
                 {loggedIn && (
                     <div>
-                    <InklingForm></InklingForm>
+                    <InklingForm />
                     </div>
                 )}
                 <div>
@@ -27,7 +27,7 @@ const Feed = () => {
                     ) : (
                         <InklingList
                             inklings={inklings}
-                            title="Feed"
+                            title="Weekly Ink"
                         />
                     )}
                 </div>
