@@ -8,7 +8,7 @@ function Header({currentPage, handlePageChange}){
     return(
         <Navbar bg="dark" variant="dark" expand="lg">
       <Container className='d-flex'>
-        <Navbar.Brand className="navbar-brand d-flex align-items-center text-light" href="#home">Zasen Portfolio</Navbar.Brand>
+        <Navbar.Brand className="navbar-brand d-flex align-items-center text-light" href="#home">Inkling</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className='justify-content-end text-light'>
 
