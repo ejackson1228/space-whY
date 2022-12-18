@@ -1,4 +1,4 @@
-const { Schema, Model } = require('mongoose');
+const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
@@ -74,6 +74,6 @@ userSchema.virtual('postCount').get(function() {
 //     return this.notifications.length;
 // });
 
-const User = Model('User', userSchema);
+const User = model('User', userSchema);
 
 module.exports = User;
