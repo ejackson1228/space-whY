@@ -1,9 +1,16 @@
 import React from "react";
+import ProfileEditForm from '../components/ProfileEditForm';
+
 function EditProfile(){
     return(
-        <>
-        <h1>Edit Profile</h1>
-        </>
+        <div>
+        <Header></Header>
+        <main>
+        <h1>Edit EditProfile</h1>
+        <ProfileEditForm></ProfileEditForm>
+        </main>
+      
+        </div>
     )
 }
 export default EditProfile;
