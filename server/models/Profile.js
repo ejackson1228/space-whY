@@ -1,11 +1,12 @@
-const { Schema, Model } = require('mongoose');
+const { Schema, model } = require('mongoose');
 const formatDate = require('../utils/dateFormat');
 
 const profileSchema = new Schema (
     {
         user: {
             type: Schema.Types.ObjectId,
-            ref: 'User'
+            ref: 'User',
+            unique: true
         },
         avatar: {
             type: String,
@@ -52,6 +53,6 @@ const profileSchema = new Schema (
 //     Date.now() - 
 // })
 
-const Profile = Model('Profile', profileSchema);
+const Profile = model('Profile', profileSchema);
 
 module.exports = Profile;

@@ -1,4 +1,4 @@
-const { Schema, Model } = require('mongoose');
+const { Schema, model } = require('mongoose');
 const formatDate = require('../utils/dateFormat');
 const commentSchema = require('./Comment');
 const likeSchema = require('./Like');
@@ -39,7 +39,7 @@ inklingSchema.virtual('likeCount').get(function() {
     return this.likes.length;
 });
 
-const Inkling = Model('Inkling', inklingSchema);
+const Inkling = model('Inkling', inklingSchema);
 
 module.exports = Inkling;
 

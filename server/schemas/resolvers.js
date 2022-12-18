@@ -1,4 +1,5 @@
-const { User, Profile, Post } = require('../models');
+const { AuthenticationError } = require('apollo-server-errors');
+const { User, Profile, Inkling } = require('../models');
 
 const resolvers = {
     Query: {
@@ -28,10 +29,10 @@ const resolvers = {
       },
       inklings: async (parent, { username }) => {
         const params = username ? { username } : {};
-        return inkling.find(params).sort({ createdAt: -1 });
+        return Inkling.find(params).sort({ createdAt: -1 });
       },
       inkling: async (parent, { _id }) => {
-        return inkling.findOne({ _id });
+        return Inkling.findOne({ _id });
       }
     },
   
@@ -58,9 +59,9 @@ const resolvers = {
         const token = signToken(user);
         return { token, user };
       },
-      addinkling: async (parent, args, context) => {
+      addInkling: async (parent, args, context) => {
         if (context.user) {
-          const inkling = await inkling.create({ ...args, username: context.user.username });
+          const inkling = await Inkling.create({ ...args, username: context.user.username });
   
           await User.findByIdAndUpdate(
             { _id: context.user._id },
@@ -73,11 +74,11 @@ const resolvers = {
   
         throw new AuthenticationError('Please Log In!');
       },
-      addReaction: async (parent, { inklingId, reactionBody }, context) => {
+      addComment: async (parent, { inklingId, commentBody }, context) => {
         if (context.user) {
-          const updatedinkling = await inkling.findOneAndUpdate(
+          const updatedinkling = await Inkling.findOneAndUpdate(
             { _id: inklingId },
-            { $push: { reactions: { reactionBody, username: context.user.username } } },
+            { $push: { reactions: { commentBody, username: context.user.username } } },
             { new: true, runValidators: true }
           );
   
@@ -98,6 +99,17 @@ const resolvers = {
         }
   
         throw new AuthenticationError('Please Log In!');
+      },
+      addProfile: async (parent, args , context) => {
+        if(context.user) {
+          const createdProfile = await Profile.create(
+            { ...args, user: context.user._id }
+          )
+
+          return createdProfile;
+        }
+
+        throw new AuthenticationError('Please Log in!');
       }
     }
   };
