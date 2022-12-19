@@ -14,7 +14,7 @@ const typeDefs = gql `
 
     type Profile {
         user: User
-        avatar: String
+        avatar: Object
         bio: String
         song: String
         links: [String]
@@ -31,6 +31,7 @@ const typeDefs = gql `
         likes: [Like]
         commentCount: Int
         likeCount: Int
+        image: String
     }
 
     type Comment {

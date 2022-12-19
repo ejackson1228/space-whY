@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {Image} from 'cloudinary-react';
 
 const InklingList = ({ inklings, title }) => {
     if (!inklings.length) {
         return <h3>No ink yet.</h3>;
     }
-
+    // use the above import to render images conditionally (if they have a validd image property) on Inklings like so: 
+    // <Image cloudName={process.env.CLOUDINARY_NAME} publicId={inkling.image} />
     return (
         <div>
             <h3>{title}</h3>

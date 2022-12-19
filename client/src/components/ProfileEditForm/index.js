@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import ImageUploading from 'react-images-uploading';
+import axios from 'axios';
+// import {Image} from 'cloudinary-react';
+import { ADD_PROFILE } from '../../utils/mutations';
+
+
+
+
 
 
 const profileForm = ({ user }) => {
-    const [addProfile, { error }] = useMutation(/*add_profile*/);
+    const [addProfile, { error }] = useMutation(ADD_PROFILE);
     const [characterCount, setCharacterCount] = useState(0);
     const [bioBody, setBioBody] = useState("");
-    const [avatar, setAvatar] = useState(src="");
+    const [selectedImage, setSelectedImage] = useState("");
 
     const handleChange = (event) => {
         if (event.target.value.length <= 280) {
@@ -17,23 +23,26 @@ const profileForm = ({ user }) => {
     };
 
     const handleSubmit = async (event) => {
+        const formData = new FormData()
+        formData.append('file', selectedImage);
+        formData.append("upload_preset", "space-why-iu");
         
+        const response = await axios.post("https://api.cloudinary.com/v1_1/dgyhfumot/image/upload", formData);
+
+        console.log(response);
+
         try {
             await addProfile({
-                variables: { }
+                variables: { 
+                    avatar: response.data.public_id, // this data from the response is the string identifier for the image hosted on cloudinary
+                }
             })
         } catch(e) {
             console.error(e)
         };
     };
 
-    const [image, setImage] = useState();
-    const maxNumber = 69;
-    const onChange = (image) => {
-        console.log(image)
-        setImage(image);
-    }
-
+    
  
 
     return (
@@ -47,44 +56,8 @@ const profileForm = ({ user }) => {
                         <input type="radio" id="user-age-no">No</input>
                     </div>
                     <div className='image-upload'>
-                        <ImageUploading
-                        value={image}
-                        onChange={onChange}
-                        maxNumber={maxNumber}
-                        dataURLKey='data_url'
-                        acceptType={"jpg"}
-                        >
-                            {({
-                                image,
-                                onImageUpload,
-                                onImageRemove,
-                                onImageUpdate,
-                                isDragging,
-                                dragProps
-                            }) => (
-
-                                <div className='upload__image-wrapper'>
-                                    <button style={ isDragging ? { color: "red" } : null }
-                                    onClick={onImageUpload}
-                                    {...dragProps}
-                                    >
-                                        Click or Drop Here
-                                    </button>
-                                    &nbsp;
-                                    <button onClick={onImageRemove}>Remove Image</button>
-                                    {image && 
-                                    <div key={image} className="image-item">
-                                        <img src={image.data_url} alt="" width="100" />
-                                        <div className='image-item__btn-wrapper'>
-                                            <button onClick={() => onImageUpdate(image)}>Update</button>
-                                            <button onClick={() => onImageRemove(image)}>Remove</button>
-                                        </div>
-                                    </div>
-                                    }
-                                </div>
-                            )}
-                        </ImageUploading>
-                        
+                        <p> Upload a picture to display as your avatar! </p>
+                        <input type="file" onChange={(e) => {setSelectedImage(e.target.files[0])}} />
                     </div>
                     <div id="profile-bio-form">
                         <p className={`${characterCount === 280 ? 'text-error' : ''}`}>Character Count: {characterCount}/280</p>

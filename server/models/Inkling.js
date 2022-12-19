@@ -22,6 +22,9 @@ const inklingSchema = new Schema (
         },
         comments: [commentSchema], //still need to make comment schema
         likes: [likeSchema],
+        image: {
+            type: String
+        }
     },
     {
         toJSON: {

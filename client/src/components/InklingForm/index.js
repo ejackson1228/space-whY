@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-
+import axios from 'axios';
 import { useMutation } from '@apollo/client';
 import { ADD_INKLING } from '../../utils/mutations';
 import { QUERY_INKLINGS, QUERY_ME } from '../../utils/queries';
+import dotenv from 'dotenv';
 
 const InklingForm = () => {
     const [inklingText, setText] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
+    const [selectedImage, setSelectedImage] = useState("");
 
     const [addInkling, { error }] = useMutation(ADD_INKLING, {
         update(cache, { data: { addInkling } }) {
@@ -32,6 +34,7 @@ const InklingForm = () => {
         }
     });
 
+
     // update state based on form input changes
     const handleChange = (event) => {
         if (event.target.value.length <= 400) {
@@ -44,9 +47,20 @@ const InklingForm = () => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
+        const formData = new FormData();
+        formData.append('file', selectedImage);
+        formData.append('upload_preset', 'space-why-iu');
+
+        const response = await axios.post("https://api.cloudinary.com/v1_1/dgyhfumot/image/upload", formData);
+
+        console.log(response);
+
         try {
             await addInkling({
-                variables: { inklingText },
+                variables: { 
+                inklingText,
+                image: response.data.public_id // this is a string returned from cloudinary to identify the image stored
+                },                             // we will render the image by fetching from cloudinary URL with the mentioned string in the fetch
             });
 
             // clear form value
@@ -68,6 +82,7 @@ const InklingForm = () => {
             <form
                 onSubmit={handleFormSubmit}
             >
+                <input type="file" onChange={(e) => {setSelectedImage(e.target.files[0])}} />
                 <textarea
                     placeholder='Spread some ink...'
                     value={inklingText}
