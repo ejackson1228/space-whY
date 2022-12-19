@@ -6,7 +6,6 @@ import Footer from "../components/Footer";
 function Feed(){
     return(
         <div>
-        <Header></Header>
         <main>
         <h1>Feed</h1>
         <div>
@@ -14,7 +13,6 @@ function Feed(){
         </div>
         <InklingList></InklingList>
         </main>
-        <Footer></Footer>
         </div>
     )
 }
