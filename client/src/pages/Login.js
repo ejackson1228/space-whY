@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from '../utils/mutations';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form'
+import Card from 'react-bootstrap/Card';
 
 import Auth from '../utils/auth';
 
@@ -24,7 +27,7 @@ const Login = (props) => {
         event.preventDefault();
 
         try {
-            const { data } = await login ({
+            const { data } = await login({
                 variables: { ...formState },
             });
 
@@ -40,7 +43,7 @@ const Login = (props) => {
         });
     };
 
-    return(
+    return (
         // set up flex-row in main
         <main>
             {/* div to set up column */}
@@ -48,11 +51,14 @@ const Login = (props) => {
                 {/* div to set up card */}
                 <div>
                     {/* // Login Form: This will be the default page unless logged in // */}
-                    <h4>Login</h4>
-                    {/* div to set up card body */}
-                    <div>
-                        <form onSubmit={handleFormSubmit}>
-                            <input
+                    <Card>
+                        <Card.Header as="h4">Login </Card.Header>
+                        {/* div to set up card body */}
+
+
+                        <Form onSubmit={handleFormSubmit}>
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control
                                 className="form-input"
                                 placeholder="Your email"
                                 name="email"
@@ -61,7 +67,8 @@ const Login = (props) => {
                                 value={formState.email}
                                 onChange={handleChange}
                             />
-                            <input
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control
                                 className="form-input"
                                 placeholder="******"
                                 name="password"
@@ -70,19 +77,23 @@ const Login = (props) => {
                                 value={formState.password}
                                 onChange={handleChange}
                             />
-                            <button className="btn" type="submit">
+                            <Button variant="dark" type="submit">
                                 {/* cute icon instead of submit text? */}
                                 Submit
-                            </button>
-                        </form>
+                            </Button>
+                        </Form>
 
                         {error && <div>Login failed</div>}
-                    </div>
+
+                        {/* Link to Signup */}
+                        <Card.Footer className="text-muted">
+                        Don't have an account yet?
+                        <Link to="/signup">Sign Up</Link>
+                        </Card.Footer>
+                    </Card>
                 </div>
             </div>
-            {/* Link to Signup */}
-            Don't have an account yet?
-            <Link to="/signup">Sign Up</Link>
+
         </main>
     );
 };
