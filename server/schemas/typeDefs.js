@@ -23,6 +23,7 @@ const typeDefs = gql `
     }
 
     type Inkling {
+        _id: ID
         inklingText: String
         createdAt: String
         username: String
@@ -49,6 +50,8 @@ const typeDefs = gql `
         user(username: String!): User
         inklings(username: String): [Inkling]
         inkling(_id: ID!): Inkling
+        profile(user: ID!): Profile
+        profiles: [Profile]
     }
 
     type Auth {
@@ -62,7 +65,7 @@ const typeDefs = gql `
         addInkling(inklingText: String!): Inkling
         addProfile(user: ID!): Profile
         addComment(inklingId: ID!, commentBody: String!): Inkling
-        addLike(inklingId: ID!, username: String!): Inkling
+        addLike(inklingId: ID!): Inkling
         addFriend(friendId: ID!): User
     }
 ` 

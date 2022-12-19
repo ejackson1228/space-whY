@@ -26,11 +26,11 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 //wildcard to handle any incorrect url parameters
-app.get('*', ( req, res ) => {
-    res.sendFile(path.join(__dirname, '../client/build/index.html'))
-});
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  });
 
-const startApolloServer = async (typeDefs, resolvers) => {
+const startApolloServer = async () => {
     await server.start();
     server.applyMiddleware({ app });
 
