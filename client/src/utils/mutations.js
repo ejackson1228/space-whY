@@ -1,75 +1,99 @@
 import { gql } from '@apollo/client';
 
-export const ADD_INKLING = gql`
-mutation addInkling($inklingText: String!) {
-  addInkling(inklingText: $inklingText) {
-    _id
-    inklingText
-    createdAt
-    username
-    commentCount
-    comments {
-      _id
+export const LOGIN_USER = gql`
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
+      }
     }
   }
-}
+`;
+
+export const ADD_USER = gql`
+  mutation addUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
+      }
+    }
+  }
+`;
+
+export const ADD_INKLING = gql`
+  mutation addInkling($inklingText: String!) {
+    addInkling(inklingText: $inklingText) {
+      _id
+      inklingText
+      createdAt
+      username
+      commentCount
+      comments {
+        _id
+      }
+    }
+  }
 `;
 
 export const ADD_COMMENT = gql`
-mutation addComment($inklingId: ID!, $commentBody: String!) {
-  addComment(inklingId: $inklingId, commentBody: $commentBody) {
-    _id
-    commentCount
-    comments {
+  mutation addComment($inklingId: ID!, $commentBody: String!) {
+    addComment(inklingId: $inklingId, commentBody: $commentBody) {
       _id
-      commentBody
-      createdAt
-      username
+      commentCount
+      comments {
+        _id
+        commentBody
+        createdAt
+        username
+      }
     }
   }
-}
 `;
 
-export const ADD_FRIEND = gql`
-mutation addFriend($id: ID!) {
-  addFriend(friendId: $id) {
-    _id
-    username
-    friendCount
-    friends {
+export const ADD_SQUID = gql`
+  mutation addSquid($id: ID!) {
+    addSquid(squidId: $id) {
       _id
       username
+      squidCount
+      squids {
+        _id
+        username
+      }
     }
   }
-}
 `;
 
-export const REMOVE_FRIEND = gql`
-mutation removeFriend($id: ID!) {
-  removeFriend(id: $id) {
-    _id
-    username
-    friends {
+export const REMOVE_SQUID = gql`
+  mutation removeSquid($id: ID!) {
+    removeSquid(id: $id) {
       _id
       username
+      squids {
+        _id
+        username
+      }
     }
   }
-}
 `;
 
 export const ADD_PROFILE = gql `
-mutations addProfile($user: User!) {
-  addProfile(user: $user) {
-    user {
-      _id
-      username
+  mutation addProfile($user: User!) {
+    addProfile(user: $user) {
+      user {
+        _id
+        username
+      }
+      avatar
+      bio
+      song
+      links
+      categories
+      createdAt
     }
-    avatar
-    bio
-    song
-    links
-    categories
-    createdAt
   }
-}
-`
+`;

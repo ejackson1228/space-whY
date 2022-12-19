@@ -1,9 +1,18 @@
-import React from 'react';
+
+//import React from 'react';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { setContext } from '@apollo/client/link/context';
 
+//importing header and footer
+import Header from './components/Header';
 import Footer from './components/Footer';
+
+//importing pages for page changes
+import Feed from './pages/Feed';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Profile from './pages/Profile';
 
 const httpLink = createHttpLink({
   uri: '/graphql'
@@ -29,10 +38,25 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-          {/* <Header /> */}
+           <Header />
           <div className="container">
             <Routes>
-              {/* <Home /> */}
+              <Route
+                path="/"
+                element={<Feed />}
+              />
+              <Route
+                path="/login"
+                element={<Login />}
+              />
+              <Route
+                path="/signup"
+                element={<Signup />}
+              />
+              <Route
+                path="/profile"
+                element={<Profile />}
+              />
             </Routes>
           </div>
           <Footer />
