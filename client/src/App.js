@@ -10,6 +10,8 @@ import Feed from './pages/Feed';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
+import SingleInkling from './pages/SingleInkling';
+import NoMatch from './pages/NoMatch';
 
 const httpLink = createHttpLink({
   uri: '/graphql'
@@ -53,6 +55,14 @@ function App() {
               <Route
                 path="/profile"
                 element={<Profile />}
+              />
+              <Route
+                path="/inkling/:id"
+                element={<SingleInkling />}
+              />
+              <Route
+                path="*"
+                element={<NoMatch />}
               />
             </Routes>
           </div>
