@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(./assets/images/background1.jpeg) ;
+  background-repeat: no-repeat, repeat;
+  background-position: center;
 }
 
 code {
@@ -14,7 +17,8 @@ code {
 .footer{
   margin-top: 1rem;
   padding: 1rem;
-  background-color: rgb(235, 195, 64);
+  background-color: rgb(20, 18, 11);
+  color: aliceblue;
   position: fixed;
   bottom: 0;
   left: 0;
