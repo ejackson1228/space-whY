@@ -24,7 +24,7 @@ const InklingForm = () => {
             }
 
             // update inkling array's cache
-            const { thoughts } = cache.readQuery({ query: QUERY_INKLINGS });
+            const { inklings } = cache.readQuery({ query: QUERY_INKLINGS });
             cache.writeQuery({
                 query: QUERY_INKLINGS,
                 data: { inklings: [addInkling, ...inklings] },

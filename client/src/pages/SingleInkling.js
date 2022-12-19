@@ -9,7 +9,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_INKLING } from '../utils/queries';
 
 const SingleInkling = (props) => {
-    const { id: thoughtId } = useParams();
+    const { id: inklingId } = useParams();
 
     const { loading, data } = useQuery(QUERY_INKLING, {
         variables: { id: inklingId }
