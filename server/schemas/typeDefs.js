@@ -7,9 +7,9 @@ const typeDefs = gql `
         email: String
         age: Int
         friends: [User]
-        posts: [Post]
+        inklings: [Inkling]
         friendCount: Int
-        postCount: Int
+        inklingCount: Int
     }
 
     type Profile {
@@ -22,14 +22,16 @@ const typeDefs = gql `
         createdAt: String
     }
 
-    type Post {
-        postText: String
+    type Inkling {
+        _id: ID
+        inklingText: String
         createdAt: String
         username: String
         comments: [Comment]
         likes: [Like]
         commentCount: Int
         likeCount: Int
+        image: String
     }
 
     type Comment {
@@ -38,21 +40,33 @@ const typeDefs = gql `
         createdAt: String
     }
 
+    type Like {
+        username: String
+        user_id: ID
+    }
+
     type Query {
         me: User
         users: [User]
         user(username: String!): User
-        posts(username: String): [Post]
-        post(_id: ID!): Post
+        inklings(username: String): [Inkling]
+        inkling(_id: ID!): Inkling
+        profile(user: ID!): Profile
+        profiles: [Profile]
+    }
+
+    type Auth {
+        token: ID!
+        user: User
     }
 
     type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
-        addPost(postText: String!): Post
-        addProfile(user: User!): Profile
-        addComment(postId: ID!, commentBody: String!): Post
-        addLike(postId: ID!, username: String!): Post
+        addInkling(inklingText: String!): Inkling
+        addProfile(user: ID!): Profile
+        addComment(inklingId: ID!, commentBody: String!): Inkling
+        addLike(inklingId: ID!): Inkling
         addFriend(friendId: ID!): User
     }
 ` 

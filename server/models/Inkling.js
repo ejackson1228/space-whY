@@ -1,13 +1,13 @@
-const { Schema, Model } = require('mongoose');
+const { Schema, model } = require('mongoose');
 const formatDate = require('../utils/dateFormat');
 const commentSchema = require('./Comment');
 const likeSchema = require('./Like');
 
-const postSchema = new Schema (
+const inklingSchema = new Schema (
     {
-        postText: {
+        inklingText: {
             type: String,
-            required: "Empty posts are not supported",
+            required: "Empty Inklings are not supported",
             minLength: 1,
             maxLength: 400
         },
@@ -22,6 +22,9 @@ const postSchema = new Schema (
         },
         comments: [commentSchema], //still need to make comment schema
         likes: [likeSchema],
+        image: {
+            type: String
+        }
     },
     {
         toJSON: {
@@ -31,15 +34,15 @@ const postSchema = new Schema (
     }
 );
 
-postSchema.virtual('commentCount').get(function() {
+inklingSchema.virtual('commentCount').get(function() {
     return this.comments.length;
 });
 
-postSchema.virtual('likeCount').get(function() {
+inklingSchema.virtual('likeCount').get(function() {
     return this.likes.length;
 });
 
-const Post = Model('Post', postSchema);
+const Inkling = model('Inkling', inklingSchema);
 
-module.exports = Post;
+module.exports = Inkling;
 
