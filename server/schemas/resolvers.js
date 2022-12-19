@@ -1,5 +1,6 @@
 const { AuthenticationError } = require('apollo-server-errors');
 const { User, Profile, Inkling } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
@@ -23,9 +24,9 @@ const resolvers = {
       },
       user: async (parent, { username }) => {
         return User.findOne({ username })
-          .select('-__v -password')
-          .populate('friends')
-          .populate('inklings');
+        .select('-__v -password')
+        .populate('inklings')
+        .populate('friends')
       },
       inklings: async (parent, { username }) => {
         const params = username ? { username } : {};
@@ -33,6 +34,13 @@ const resolvers = {
       },
       inkling: async (parent, { _id }) => {
         return Inkling.findOne({ _id });
+      },
+      profile: async (parent, { user_id }) => {
+        return Profile.findOne({ user : user_id  } );
+      },
+      profiles: async () => {
+        return Profile.find()
+        .select('-__v')
       }
     },
   
@@ -78,7 +86,7 @@ const resolvers = {
         if (context.user) {
           const updatedinkling = await Inkling.findOneAndUpdate(
             { _id: inklingId },
-            { $push: { reactions: { commentBody, username: context.user.username } } },
+            { $push: { comments: { commentBody, username: context.user.username } } },
             { new: true, runValidators: true }
           );
   
@@ -110,8 +118,43 @@ const resolvers = {
         }
 
         throw new AuthenticationError('Please Log in!');
+      },
+      addLike: async (parent, { inklingId }, context) => {
+        if(context.user) {
+          const updatedInkling = await Inkling.findByIdAndUpdate(
+            { _id: inklingId },
+            { $addToSet: { likes: { user_id: context.user._id, username: context.user.username } } },
+            { new: true, runValidators: true}
+          )
+
+          return updatedInkling;
+        }
+
+        throw new AuthenticationError('Please log in!')
       }
     }
   };
   
   module.exports = resolvers;
+  
+  // user: async (parent, { username, _id }) => {
+      //   const findUserByUsername = function () {
+      //     return User.findOne({ username })
+      //     .select('-__v -password')
+      //     .populate('friends')
+      //     .populate('inklings');
+      //   } 
+
+      //   const findUserById = function() {
+      //     return User.findById({ _id })
+      //     .select('-__v -password')
+      //     .populate('friends')
+      //     .populate('inklings');
+      //   }
+        
+      //   username ? 
+      //   findUserByUsername(username)
+      //   :
+      //   findUserById(_id)
+        
+      // }
