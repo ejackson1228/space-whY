@@ -3,13 +3,11 @@ import { useMutation } from '@apollo/client';
 import axios from 'axios';
 // import {Image} from 'cloudinary-react';
 import { ADD_PROFILE } from '../../utils/mutations';
+import dotenv from 'dotenv';
 
+dotenv.config()
 
-
-
-
-
-const profileForm = ({ user }) => {
+const profileForm = () => {
     const [addProfile, { error }] = useMutation(ADD_PROFILE);
     const [characterCount, setCharacterCount] = useState(0);
     const [bioBody, setBioBody] = useState("");
@@ -25,24 +23,24 @@ const profileForm = ({ user }) => {
     const handleSubmit = async (event) => {
         const formData = new FormData()
         formData.append('file', selectedImage);
-        formData.append("upload_preset", "space-why-iu");
+        formData.append("upload_preset", process.env.UPLOAD_PRESET);
         
-        const response = await axios.post("https://api.cloudinary.com/v1_1/dgyhfumot/image/upload", formData);
+        const response = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_NAME}/image/upload`, formData);
 
         console.log(response);
 
         try {
             await addProfile({
                 variables: { 
-                    avatar: response.data.public_id, // this data from the response is the string identifier for the image hosted on cloudinary
+                    avatar: response.data.public_id,// this data from the response is the string identifier for the image hosted on cloudinary
+                    bio: bioBody,
+                    
                 }
             })
         } catch(e) {
             console.error(e)
         };
     };
-
-    
  
 
     return (

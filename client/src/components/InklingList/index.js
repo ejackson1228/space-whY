@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {Image} from 'cloudinary-react';
+import { Image } from 'cloudinary-react';
 
 const InklingList = ({ inklings, title }) => {
     if (!inklings.length) {
@@ -20,6 +20,9 @@ const InklingList = ({ inklings, title }) => {
                             </Link>{' '}
                             inked on {inkling.createdAt}
                         </p>
+                        <div className='inkling-image'>
+                            <Image cloudName={process.env.CLOUDINARY_NAME} publicId={inkling.image} /> 
+                        </div>
                         <div>
                             <Link to={`/inkling/${inkling._id}`}>
                                 <p>{inkling.inklingText}</p>

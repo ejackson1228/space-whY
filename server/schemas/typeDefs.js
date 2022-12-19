@@ -14,7 +14,7 @@ const typeDefs = gql `
 
     type Profile {
         user: User
-        avatar: Object
+        avatar: String
         bio: String
         song: String
         links: [String]

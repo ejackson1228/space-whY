@@ -49,18 +49,18 @@ const InklingForm = () => {
 
         const formData = new FormData();
         formData.append('file', selectedImage);
-        formData.append('upload_preset', 'space-why-iu');
+        formData.append('upload_preset', process.env.UPLOAD_PRESET);
 
-        const response = await axios.post("https://api.cloudinary.com/v1_1/dgyhfumot/image/upload", formData);
+        const response = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_NAME}/image/upload`, formData);
 
         console.log(response);
 
         try {
             await addInkling({
                 variables: { 
-                inklingText,
+                inklingText: inklingText,
                 image: response.data.public_id // this is a string returned from cloudinary to identify the image stored
-                },                             // we will render the image by fetching from cloudinary URL with the mentioned string in the fetch
+                },                             // we will render the image by fetching via <Image> component from cloudinary
             });
 
             // clear form value
