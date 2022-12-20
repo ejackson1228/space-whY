@@ -14,6 +14,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import SingleInkling from './pages/SingleInkling';
+import EditProfile from "./pages/EditProfile"
 import NoMatch from './pages/NoMatch';
 
 const httpLink = createHttpLink({
@@ -66,6 +67,10 @@ function App() {
               <Route
                 path="*"
                 element={<NoMatch />}
+              />
+              <Route
+              path="/EditProfile"
+              element={<EditProfile/>}
               />
             </Routes>
           </div>
