@@ -34,7 +34,15 @@ export const ADD_INKLING = gql`
       commentCount
       comments {
         _id
+        username
+        commentBody
       }
+      likes {
+        username
+        user_id
+      }
+      likeCount
+      image
     }
   }
 `;
