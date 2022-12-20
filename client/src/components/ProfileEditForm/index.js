@@ -5,7 +5,7 @@ import axios from 'axios';
 import { ADD_PROFILE } from '../../utils/mutations';
 import dotenv from 'dotenv';
 
-dotenv.config()
+dotenv.config();
 
 const profileForm = () => {
     const [addProfile, { error }] = useMutation(ADD_PROFILE);

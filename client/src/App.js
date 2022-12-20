@@ -1,11 +1,14 @@
-import React from 'react';
+
+//import React from 'react';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { setContext } from '@apollo/client/link/context';
 
+//importing header and footer
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+//importing pages for page changes
 import Feed from './pages/Feed';
 import Login from './pages/Login';
 import Signup from './pages/Signup';

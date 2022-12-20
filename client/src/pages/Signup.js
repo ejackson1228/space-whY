@@ -38,8 +38,8 @@ const Signup = () => {
     };
 
     return(
-        // set up main as flex-row
         <main>
+        <div>
             {/* div to set up column */}
             <div>
                 {/* div to set up card */}
@@ -84,8 +84,9 @@ const Signup = () => {
                     </div>
                 </div>
             </div>
+            </div>
         </main>
-    );
+        );
 };
 
 export default Signup;

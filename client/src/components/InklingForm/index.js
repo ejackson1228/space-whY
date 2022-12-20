@@ -5,6 +5,8 @@ import { ADD_INKLING } from '../../utils/mutations';
 import { QUERY_INKLINGS, QUERY_ME } from '../../utils/queries';
 import dotenv from 'dotenv';
 
+dotenv.config();
+
 const InklingForm = () => {
     const [inklingText, setText] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
@@ -29,7 +31,7 @@ const InklingForm = () => {
             const { inklings } = cache.readQuery({ query: QUERY_INKLINGS });
             cache.writeQuery({
                 query: QUERY_INKLINGS,
-                data: { inklings: [addInkling, ...inklings] },
+                //data: { inklings: [addInkling, ...inklings] },
             });
         }
     });
