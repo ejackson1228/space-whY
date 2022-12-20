@@ -3,7 +3,15 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
+import Auth from '../../utils/auth';
+
 function Header({ currentPage, handlePageChange }) {
+
+  const logout = event => {
+    event.preventDefault();
+    Auth.logout();
+  }
+
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container className='d-flex'>
@@ -14,12 +22,21 @@ function Header({ currentPage, handlePageChange }) {
           <Nav
             className='navbar navbar-dark navbar-expand-md bg-dark py-3 '
           >
-            <Nav.Item>
-              <Nav.Link href="Login" onClick={() => handlePageChange('Login')}>Login</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="Profile" onClick={() => handlePageChange('Profile')}>Profile</Nav.Link>
-            </Nav.Item>
+            {Auth.loggedIn() ? (
+              // link to profile and logout
+              <>
+                <Nav.Item>
+                  <Nav.Link href="Profile" onClick={() => handlePageChange('Profile')}>Profile</Nav.Link>
+                </Nav.Item>
+                <a href="/" onClick={logout}>Logout</a>
+              </>
+            ) : (
+              // link to login
+              <Nav.Item>
+                <Nav.Link href="Login" onClick={() => handlePageChange('Login')}>Login</Nav.Link>
+              </Nav.Item>
+            )}
+
             <Nav.Item>
               <Nav.Link href="/" onClick={() => handlePageChange('Feed')}>Feed</Nav.Link>
             </Nav.Item>
