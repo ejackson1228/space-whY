@@ -4,6 +4,10 @@ import { useMutation } from '@apollo/client';
 import { ADD_INKLING } from '../../utils/mutations';
 import { QUERY_INKLINGS, QUERY_ME } from '../../utils/queries';
 
+//try react-dropbox to implement image viewing before upload
+
+//try react-dropbox to implement image viewing before upload
+
 import Form from 'react-bootstrap/Form'; 
 import Button from 'react-bootstrap/esm/Button';
 
