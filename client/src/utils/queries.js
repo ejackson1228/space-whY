@@ -9,11 +9,16 @@ export const QUERY_INKLINGS = gql`
       username
       commentCount
       comments {
-        _id
         createdAt
         username
         commentBody
       }
+      likes {
+        username
+        user_id
+      }
+      likeCount
+      image
     }
   }
 `;
