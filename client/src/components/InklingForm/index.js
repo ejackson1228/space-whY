@@ -59,13 +59,15 @@ const InklingForm = () => {
 
         const response = await axios.post(`https://api.cloudinary.com/v1_1/dgyhfumot/image/upload`, formData);
 
-        console.log(response);
+        console.log(response.data.public_id);
+        
+        const imageString = response.data.public_id;
 
         try {
             await addInkling({
                 variables: { 
                 inklingText: inklingText,
-                image: response.data.public_id // this is a string returned from cloudinary to identify the image stored
+                image: imageString // this is a string returned from cloudinary to identify the image stored
                 },                             // we will render the image by fetching via <Image> component from cloudinary
             });
 

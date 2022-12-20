@@ -9,6 +9,7 @@ export const QUERY_INKLINGS = gql`
       username
       commentCount
       comments {
+        _id
         createdAt
         username
         commentBody
@@ -47,8 +48,8 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      squidCount
-      squids {
+      friendCount
+      friends {
         _id
         username
       }
@@ -68,7 +69,7 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      squidCount
+      friendCount
       inklings {
         _id
         inklingText
@@ -81,7 +82,8 @@ export const QUERY_ME = gql`
           username
         }
       }
-      squids {
+      inklingCount
+      friends {
         _id
         username
       }
@@ -95,8 +97,8 @@ export const QUERY_ME_BASIC = gql`
       _id
       username
       email
-      squidCount
-      squids {
+      friendCount
+      friends {
         _id
         username
       }
