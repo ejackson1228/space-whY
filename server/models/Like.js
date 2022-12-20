@@ -1,4 +1,3 @@
-const { truncateSync } = require('fs');
 const { Schema } = require('mongoose');
 
 const likeSchema = new Schema (

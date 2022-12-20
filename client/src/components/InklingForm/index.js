@@ -3,10 +3,16 @@ import axios from 'axios';
 import { useMutation } from '@apollo/client';
 import { ADD_INKLING } from '../../utils/mutations';
 import { QUERY_INKLINGS, QUERY_ME } from '../../utils/queries';
-import dotenv from 'dotenv';
+
+//try react-dropbox to implement image viewing before upload
+
+//try react-dropbox to implement image viewing before upload
+
+import Form from 'react-bootstrap/Form'; 
+import Button from 'react-bootstrap/esm/Button';
 
 const InklingForm = () => {
-    const [inklingText, setText] = useState('');
+    const [inklingText, setInklingText] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
     const [selectedImage, setSelectedImage] = useState("");
 
@@ -38,7 +44,7 @@ const InklingForm = () => {
     // update state based on form input changes
     const handleChange = (event) => {
         if (event.target.value.length <= 400) {
-            setText(event.target.value);
+            setInklingText(event.target.value);
             setCharacterCount(event.target.value.length);
         }
     };
@@ -49,9 +55,9 @@ const InklingForm = () => {
 
         const formData = new FormData();
         formData.append('file', selectedImage);
-        formData.append('upload_preset', process.env.UPLOAD_PRESET);
+        formData.append('upload_preset', "space-why-iu");
 
-        const response = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_NAME}/image/upload`, formData);
+        const response = await axios.post(`https://api.cloudinary.com/v1_1/dgyhfumot/image/upload`, formData);
 
         console.log(response);
 
@@ -64,7 +70,7 @@ const InklingForm = () => {
             });
 
             // clear form value
-            setText('');
+            setInklingText('');
             setCharacterCount(0);
         } catch (e) {
             console.error(e);
@@ -79,20 +85,24 @@ const InklingForm = () => {
                 {characterCount}/400
                 {error && <span>Something went wrong...</span>}
             </p>
-            <form
+            <Form
                 onSubmit={handleFormSubmit}
             >
+                <Form.Group>
                 <input type="file" onChange={(e) => {setSelectedImage(e.target.files[0])}} />
-                <textarea
+                </Form.Group>
+                <Form.Group>
+                <Form.Control as="textarea" rows={3}
                     placeholder='Spread some ink...'
                     value={inklingText}
                     onChange={handleChange}
-                ></textarea>
-                <button type='submit'>
+                ></Form.Control>
+                </Form.Group>
+                <Button type='submit' variant="dark" >
                     {/* Maybe replace button text with an icon/symbol? */}
                     Submit
-                </button>
-            </form>
+                </Button>
+            </Form>
         </div>
     );
 };

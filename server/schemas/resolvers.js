@@ -35,12 +35,18 @@ const resolvers = {
       inkling: async (parent, { _id }) => {
         return Inkling.findOne({ _id });
       },
-      profile: async (parent, { user_id }) => {
-        return Profile.findOne({ user : user_id  } );
+      profile: async (parent, { user }) => {
+        try {return Profile.findOne({ user })
+        .select('-__v')
+        .populate('user');
+        } catch(error) {
+          console.log(error);
+        }
       },
       profiles: async () => {
         return Profile.find()
         .select('-__v')
+        .populate('user');
       }
     },
   
@@ -110,10 +116,10 @@ const resolvers = {
       },
       addProfile: async (parent, args , context) => {
         if(context.user) {
-          const createdProfile = await Profile.create(
+          let createdProfile = await Profile.create(
             { ...args, user: context.user._id }
           )
-
+          createdProfile = await createdProfile.populate('user').execPopulate();
           return createdProfile;
         }
 
