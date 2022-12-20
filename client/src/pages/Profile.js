@@ -78,7 +78,7 @@ const Profile = (props) => {
                     </button>
                 ) : (
                     <button className="btn" onClick={handleSquidsView}>
-                        //Squids
+                        Squids
                     </button>
                 )}
             </div>

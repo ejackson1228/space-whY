@@ -31,7 +31,7 @@ const InklingForm = () => {
             const { inklings } = cache.readQuery({ query: QUERY_INKLINGS });
             cache.writeQuery({
                 query: QUERY_INKLINGS,
-                //data: { inklings: [addInkling, ...inklings] },
+                data: { inklings: [addInkling, ...inklings] },
             });
         }
     });
