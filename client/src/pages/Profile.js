@@ -24,6 +24,8 @@ const Profile = (props) => {
     });
     // user object is then used to populate JSX below
     const user = data?.me || data?.user || {};
+    // useQuery to access array of squids (aka friends)
+    // const squids = data?.squids || [];
 
     // navigate to personal profile page if username is the logged-in user's
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
@@ -54,11 +56,13 @@ const Profile = (props) => {
     };
 
     // click handler to view squids
-    // const handleSquidsView = async () => {
-    //    try {
-
-    //    }
-    // }
+    const handleSquidsView = () => {
+        return (
+            // return modal with list of squids aka friends
+            // Zaiden - this may need to be wrapped with html & bootstrap to actually render a modal? Not sure
+            <Squids />
+        )
+    }
 
     return(
         <div>
