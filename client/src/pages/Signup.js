@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form'
@@ -11,7 +11,8 @@ import Col from 'react-bootstrap/Col';
 
 import Auth from "../utils/auth";
 
-// After signup go right to ProfileEdit.js
+// Import ProfileEditForm so that after signup user can be sent right to ProfileEdit.js
+import profileForm from "../components/ProfileEditForm";
 
 const Signup = () => {
     const [formState, setFormState] = useState({
@@ -41,6 +42,9 @@ const Signup = () => {
             });
 
             Auth.login(data.addUser.token);
+
+            // navigate to the edit profile page after signup
+            Navigate('profileForm');
         } catch (e) {
             console.error(e);
         }
