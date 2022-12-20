@@ -57,7 +57,8 @@ const Login = (props) => {
 
 
                         <Form onSubmit={handleFormSubmit}>
-                            <Form.Label>Email</Form.Label>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Email:</Form.Label>
                             <Form.Control
                                 className="form-input"
                                 placeholder="Your email"
@@ -67,6 +68,8 @@ const Login = (props) => {
                                 value={formState.email}
                                 onChange={handleChange}
                             />
+                            </Form.Group>
+                            
                             <Form.Label>Password</Form.Label>
                             <Form.Control
                                 className="form-input"
