@@ -16,7 +16,7 @@ function Header({ currentPage, handlePageChange }) {
             className='navbar navbar-dark navbar-expand-md bg-dark py-3 '
           >
             <Nav.Item>
-              <Nav.Link href="Signup" onClick={() => handlePageChange('Sign-Up')}>Sign Up</Nav.Link>
+              <Nav.Link href="Login" onClick={() => handlePageChange('Login')}>Login</Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link href="Profile" onClick={() => handlePageChange('Profile')}>Profile</Nav.Link>
