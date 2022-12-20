@@ -69,8 +69,9 @@ const Login = (props) => {
                                 onChange={handleChange}
                             />
                             </Form.Group>
-                            
-                            <Form.Label>Password</Form.Label>
+                           
+                            <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Label>Password:</Form.Label>
                             <Form.Control
                                 className="form-input"
                                 placeholder="******"
@@ -80,6 +81,7 @@ const Login = (props) => {
                                 value={formState.password}
                                 onChange={handleChange}
                             />
+                             </Form.Group>
                             <Button variant="dark" type="submit">
                                 {/* cute icon instead of submit text? */}
                                 Submit
