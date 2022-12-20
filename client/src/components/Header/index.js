@@ -28,9 +28,9 @@ function Header({ currentPage, handlePageChange }) {
                 <Nav.Item>
                   <Nav.Link href="Profile" onClick={() => handlePageChange('Profile')}>Profile</Nav.Link>
                 </Nav.Item>
-                <Navbar.Text>
-                  <a href="/" className="text-decoration-none text-white-50" onClick={logout}>Logout</a>
-                </Navbar.Text>
+                <Nav.Item>
+                  <Nav.Link href="/" onClick={logout}>Logout</Nav.Link>
+                </Nav.Item>
               </>
             ) : (
               // link to login
