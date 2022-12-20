@@ -4,6 +4,8 @@ import { ADD_USER } from "../utils/mutations";
 
 import Auth from "../utils/auth";
 
+// After signup go right to ProfileEdit.js
+
 const Signup = () => {
     const [formState, setFormState] = useState({
         username: '',

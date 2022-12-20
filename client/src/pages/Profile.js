@@ -67,9 +67,8 @@ const Profile = (props) => {
     return(
         <div>
             <div>
-                {/* !!!!! ASK about profile model being including inside User model in order to deconstruct correct data here !!!!! */}
-                {/* Avatar icon grabbed from user.image ?? */}
-                {/* user bio */}
+                {/* Avatar icon grabbed from profile.avatar ?? */}
+                {/* user bio from profile.bio */}
                 {/* spotify music player */}
 
                 {userParam ? (
