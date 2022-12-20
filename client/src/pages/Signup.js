@@ -11,6 +11,8 @@ import Col from 'react-bootstrap/Col';
 
 import Auth from "../utils/auth";
 
+// After signup go right to ProfileEdit.js
+
 const Signup = () => {
     const [formState, setFormState] = useState({
         username: '',
