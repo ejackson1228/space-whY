@@ -3,9 +3,7 @@ import { useMutation } from '@apollo/client';
 import axios from 'axios';
 // import {Image} from 'cloudinary-react';
 import { ADD_PROFILE } from '../../utils/mutations';
-import dotenv from 'dotenv';
 
-dotenv.config();
 
 const profileForm = () => {
     const [addProfile, { error }] = useMutation(ADD_PROFILE);
@@ -23,9 +21,9 @@ const profileForm = () => {
     const handleSubmit = async (event) => {
         const formData = new FormData()
         formData.append('file', selectedImage);
-        formData.append("upload_preset", process.env.UPLOAD_PRESET);
+        formData.append("upload_preset", "space-why-iu");
         
-        const response = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_NAME}/image/upload`, formData);
+        const response = await axios.post(`https://api.cloudinary.com/v1_1/dgyhfumot/image/upload`, formData);
 
         console.log(response);
 

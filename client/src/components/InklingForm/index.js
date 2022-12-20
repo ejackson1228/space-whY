@@ -3,9 +3,7 @@ import axios from 'axios';
 import { useMutation } from '@apollo/client';
 import { ADD_INKLING } from '../../utils/mutations';
 import { QUERY_INKLINGS, QUERY_ME } from '../../utils/queries';
-import dotenv from 'dotenv';
 
-dotenv.config();
 
 const InklingForm = () => {
     const [inklingText, setText] = useState('');
@@ -51,9 +49,9 @@ const InklingForm = () => {
 
         const formData = new FormData();
         formData.append('file', selectedImage);
-        formData.append('upload_preset', process.env.UPLOAD_PRESET);
+        formData.append('upload_preset', "space-why-iu");
 
-        const response = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_NAME}/image/upload`, formData);
+        const response = await axios.post(`https://api.cloudinary.com/v1_1/dgyhfumot/image/upload`, formData);
 
         console.log(response);
 

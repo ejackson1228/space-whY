@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/ejackson1228/space-whY#readme",
   "devDependencies": {
-    "concurrently": "^7.6.0"
+    "concurrently": "^7.6.0",
+    "dotenv-webpack": "^8.0.1"
   },
   "dependencies": {
     "mongoose": "^6.8.0"

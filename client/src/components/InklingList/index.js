@@ -21,7 +21,7 @@ const InklingList = ({ inklings, title }) => {
                             inked on {inkling.createdAt}
                         </p>
                         <div className='inkling-image'>
-                            <Image cloudName={process.env.CLOUDINARY_NAME} publicId={inkling.image} /> 
+                            <Image cloudName="dgyhfumot" publicId={inkling.image} /> 
                         </div>
                         <div>
                             <Link to={`/inkling/${inkling._id}`}>
