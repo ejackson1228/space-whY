@@ -24,8 +24,9 @@ const Profile = (props) => {
     });
     // user object is then used to populate JSX below
     const user = data?.me || data?.user || {};
-    // useQuery to access array of squids (aka friends)
-    // const squids = data?.squids || {};
+    
+    // useQuery to access profile of user
+    const profile = data?.profile || {};
 
     // navigate to personal profile page if username is the logged-in user's
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
@@ -68,7 +69,9 @@ const Profile = (props) => {
         <div>
             <div>
                 {/* Avatar icon grabbed from profile.avatar ?? */}
+                <img src={`${profile.avatar}`} alt={`${user.username}'s avatar.`} width="150" height="150"></img>
                 {/* user bio from profile.bio */}
+                <p>{profile.bio}</p>
 
                 {userParam ? (
                     <button className="btn" onClick={handleClick}>
