@@ -9,7 +9,7 @@ import { QUERY_INKLINGS } from "../utils/queries";
 const Feed = () => {
     const { loading, data } = useQuery(QUERY_INKLINGS);
     const inklings = data?.inklings || [];
-
+    console.log(inklings);
     const loggedIn = Auth.loggedIn();
 
     return(

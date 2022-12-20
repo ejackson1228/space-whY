@@ -20,9 +20,11 @@ const InklingList = ({ inklings, title }) => {
                             </Link>{' '}
                             inked on {inkling.createdAt}
                         </p>
+                        { inkling.image && 
                         <div className='inkling-image'>
                             <Image cloudName="dgyhfumot" publicId={inkling.image} /> 
                         </div>
+                        }
                         <div>
                             <Link to={`/inkling/${inkling._id}`}>
                                 <p>{inkling.inklingText}</p>

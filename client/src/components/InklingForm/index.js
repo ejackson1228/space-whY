@@ -4,6 +4,8 @@ import { useMutation } from '@apollo/client';
 import { ADD_INKLING } from '../../utils/mutations';
 import { QUERY_INKLINGS, QUERY_ME } from '../../utils/queries';
 
+//try react-dropbox to implement image viewing before upload
+
 
 const InklingForm = () => {
     const [inklingText, setText] = useState('');
