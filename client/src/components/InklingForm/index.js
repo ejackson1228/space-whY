@@ -8,7 +8,7 @@ import { QUERY_INKLINGS, QUERY_ME } from '../../utils/queries';
 
 
 const InklingForm = () => {
-    const [inklingText, setText] = useState('');
+    const [inklingText, setInklingText] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
     const [selectedImage, setSelectedImage] = useState("");
 
@@ -31,7 +31,7 @@ const InklingForm = () => {
             const { inklings } = cache.readQuery({ query: QUERY_INKLINGS });
             cache.writeQuery({
                 query: QUERY_INKLINGS,
-                //data: { inklings: [addInkling, ...inklings] },
+                data: { inklings: [addInkling, ...inklings] },
             });
         }
     });
@@ -40,7 +40,7 @@ const InklingForm = () => {
     // update state based on form input changes
     const handleChange = (event) => {
         if (event.target.value.length <= 400) {
-            setText(event.target.value);
+            setInklingText(event.target.value);
             setCharacterCount(event.target.value.length);
         }
     };
@@ -66,7 +66,7 @@ const InklingForm = () => {
             });
 
             // clear form value
-            setText('');
+            setInklingText('');
             setCharacterCount(0);
         } catch (e) {
             console.error(e);
