@@ -13,7 +13,7 @@ import { ADD_SQUID } from "../utils/mutations";
 import Auth from '../utils/auth';
 
 const Profile = (props) => {
-    const [addSquid] = useMutation(ADD_SQUID);
+    const [addSquid, { error }] = useMutation(ADD_SQUID);
 
     // userParams hook retrieves username from URL
     const { username: userParam } = useParams();
