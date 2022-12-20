@@ -13,6 +13,8 @@ import Feed from './pages/Feed';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
+import SingleInkling from './pages/SingleInkling';
+import NoMatch from './pages/NoMatch';
 
 const httpLink = createHttpLink({
   uri: '/graphql'
@@ -29,7 +31,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  link:authLink.concat(httpLink),
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache()
 });
 
@@ -56,6 +58,14 @@ function App() {
               <Route
                 path="/profile"
                 element={<Profile />}
+              />
+              <Route
+                path="/inkling/:id"
+                element={<SingleInkling />}
+              />
+              <Route
+                path="*"
+                element={<NoMatch />}
               />
             </Routes>
           </div>
