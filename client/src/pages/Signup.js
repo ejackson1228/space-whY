@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form'
 import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 import Auth from "../utils/auth";
 
 const Signup = () => {
@@ -49,15 +52,16 @@ const Signup = () => {
                     {/* div to set up card */}
                     <div>
 
-                        <Card>
+                        <Card className="col-md-10 mx-auto">
                             <Card.Header as="h4">Sign Up </Card.Header>
                             {/* div to set up card body */}
 
                             <div>
                                 <Form onSubmit={handleFormSubmit}>
 
-                                <Form.Group className="mb-3" controlId="formBasicUsername">
-                                    <Form.Label>Username:</Form.Label>
+                                <Form.Group as={Row} className="mb-3">
+                                    <Form.Label column sm={3}>  Username: </Form.Label>
+                                    <Col sm={7}>
                                     <Form.Control
                                         className="form-input"
                                         placeholder="Your username"
@@ -67,10 +71,12 @@ const Signup = () => {
                                         value={formState.username}
                                         onChange={handleChange}
                                     />
+                                    </Col>
                                     </Form.Group>
 
-                                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Label>Email:</Form.Label>
+                                    <Form.Group as={Row} className="mb-4" >
+                                    <Form.Label column sm={3}>Email:</Form.Label>
+                                    <Col sm={7}>
                                     <Form.Control
                                         className="form-input"
                                         placeholder="Your email"
@@ -80,10 +86,12 @@ const Signup = () => {
                                         value={formState.email}
                                         onChange={handleChange}
                                     />
+                                    </Col>
                                     </Form.Group>
 
-                                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                                    <Form.Label>Password:</Form.Label>
+                                    <Form.Group as={Row} className="mb-3">
+                                    <Form.Label column sm={3}>Password:</Form.Label>
+                                    <Col sm={7}>
                                     <Form.Control
                                         className="form-input"
                                         placeholder="******"
@@ -93,6 +101,7 @@ const Signup = () => {
                                         value={formState.password}
                                         onChange={handleChange}
                                     />
+                                    </Col>
                                     </Form.Group>
 
                                     <Button variant="dark" type="submit">

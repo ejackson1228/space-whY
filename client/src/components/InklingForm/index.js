@@ -4,6 +4,8 @@ import { useMutation } from '@apollo/client';
 import { ADD_INKLING } from '../../utils/mutations';
 import { QUERY_INKLINGS, QUERY_ME } from '../../utils/queries';
 
+import Form from 'react-bootstrap/Form'; 
+import Button from 'react-bootstrap/esm/Button';
 
 const InklingForm = () => {
     const [inklingText, setText] = useState('');
@@ -79,20 +81,24 @@ const InklingForm = () => {
                 {characterCount}/400
                 {error && <span>Something went wrong...</span>}
             </p>
-            <form
+            <Form
                 onSubmit={handleFormSubmit}
             >
+                <Form.Group>
                 <input type="file" onChange={(e) => {setSelectedImage(e.target.files[0])}} />
-                <textarea
+                </Form.Group>
+                <Form.Group>
+                <Form.Control as="textarea" rows={3}
                     placeholder='Spread some ink...'
                     value={inklingText}
                     onChange={handleChange}
-                ></textarea>
-                <button type='submit'>
+                ></Form.Control>
+                </Form.Group>
+                <Button type='submit' variant="dark" >
                     {/* Maybe replace button text with an icon/symbol? */}
                     Submit
-                </button>
-            </form>
+                </Button>
+            </Form>
         </div>
     );
 };
