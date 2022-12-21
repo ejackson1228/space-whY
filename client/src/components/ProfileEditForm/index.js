@@ -11,12 +11,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 
-<<<<<<< HEAD
-const ProfileEditForm = () => {
-=======
 
 const ProfileForm = () => {
->>>>>>> 0994bf3937d95926bc9340cf908b5f9def7a5b95
     const [addProfile, { error }] = useMutation(ADD_PROFILE);
     const [characterCount, setCharacterCount] = useState(0);
     const [bioBody, setBioBody] = useState("");
@@ -75,25 +71,6 @@ const ProfileForm = () => {
                         placeholder='Write something about yourself...'
                         onChange={handleChange}
                         value={bioBody}
-<<<<<<< HEAD
-                        ></textarea>
-                    </div>
-                    <div id="profile-linktree">
-                        <h5>If there are links you'd like to share on your profile, please paste the URL here:</h5>
-                        <input type="url" id="profile-twitter" placeholder='your twitter url here...'></input>
-                        <input type="url" id="profile-facebook" placeholder='your facebook url here...'></input>
-                        <input type="url" id="profile-github" placeholder='your github url here...'></input>
-                        <input type="url" id="profile-instagram" placeholder='your instagram url here...'></input>
-                        <input type="url" id="profile-linkedin" placeholder='your linkedin url here...'></input>
-                    </div>
-                </form>
-            </div>
-        </div>
-    )
-};
-
-export default ProfileEditForm;
-=======
                         >      
                         </Form.Control>
                     </Form.Group>
@@ -127,7 +104,6 @@ export default ProfileEditForm;
 
 // considering integrating spotify playback api so that users can enter a song url from spotify and then have the music player on their profilePage
 
->>>>>>> 0994bf3937d95926bc9340cf908b5f9def7a5b95
 
 
 // const imgUpload = ({ onChange, src }) => {
