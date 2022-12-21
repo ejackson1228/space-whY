@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { useMutation } from '@apollo/client';
 import { ADD_INKLING } from '../../utils/mutations';
 import { QUERY_INKLINGS, QUERY_ME } from '../../utils/queries';
@@ -14,7 +14,7 @@ import Button from 'react-bootstrap/esm/Button';
 const InklingForm = () => {
     const [inklingText, setInklingText] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
-    const [selectedImage, setSelectedImage] = useState("");
+    // const [selectedImage, setSelectedImage] = useState("");
 
     const [addInkling, { error }] = useMutation(ADD_INKLING, {
         update(cache, { data: { addInkling } }) {
@@ -53,22 +53,25 @@ const InklingForm = () => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
-        const formData = new FormData();
-        formData.append('file', selectedImage);
-        formData.append('upload_preset', process.env.REACT_APP_UPLOAD_PRESET);
+        // const formData = new FormData();
+        // formData.append('file', selectedImage);
+        // formData.append('upload_preset', process.env.REACT_APP_UPLOAD_PRESET);
 
-        const response = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_NAME}/image/upload`, formData);
+        // const response = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_NAME}/image/upload`, formData);
         
-        const imageString = response.data.public_id;
+        // const imageString = response.data.public_id;
 
-        console.log(imageString);
+        // console.log(imageString);
+
+        // this is a string returned from cloudinary to identify the image stored
+        // we will render the image by fetching via <Image> component from cloudinary
+
 
         try {
             await addInkling({
                 variables: { 
-                inklingText: inklingText,
-                image: imageString // this is a string returned from cloudinary to identify the image stored
-                },                             // we will render the image by fetching via <Image> component from cloudinary
+                inklingText: inklingText 
+                },                             
             });
 
             // clear form value
@@ -91,7 +94,7 @@ const InklingForm = () => {
                 onSubmit={handleFormSubmit}
             >
                 <Form.Group className='my-2'>
-                <input type="file" onChange={(e) => {setSelectedImage(e.target.files[0])}} />
+                <input type="file" />
                 </Form.Group>
                 <Form.Group className='my-2'>
                 <Form.Control as="textarea" rows={3}

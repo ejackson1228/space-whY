@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 
 import CommentList from '../components/CommentList';
@@ -7,11 +7,11 @@ import CommentForm from '../components/CommentForm';
 import Auth from '../utils/auth';
 import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_INKLING } from '../utils/queries';
-import { ADD_LIKE } from '../utils/mutations';
-import AuthService from '../utils/auth';
+// import { ADD_LIKE } from '../utils/mutations';
+// import AuthService from '../utils/auth';
 
 const SingleInkling = (props) => {
-    const [addLike, { error }] = useMutation(ADD_LIKE);
+    // const [addLike, { error }] = useMutation(ADD_LIKE);
 
     const { id: inklingId } = useParams();
 
