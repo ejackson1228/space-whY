@@ -16,7 +16,7 @@ const ProfileForm = () => {
     const [addProfile, { error }] = useMutation(ADD_PROFILE);
     const [characterCount, setCharacterCount] = useState(0);
     const [bioBody, setBioBody] = useState("");
-    // const [selectedImage, setSelectedImage] = useState("");
+    const [selectedImage, setSelectedImage] = useState("");
 
     const handleChange = (event) => {
         if (event.target.value.length <= 280) {
@@ -26,13 +26,18 @@ const ProfileForm = () => {
     };
 
     const handleSubmit = async (event) => {
-        // const formData = new FormData()
-        // formData.append('file', selectedImage);
-        // formData.append("upload_preset", process.env.REACT_APP_UPLOAD_PRESET);
-        
-        // const response = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_NAME}/image/upload`, formData);
+        const formData = new FormData()
+        formData.append('file', selectedImage);
 
-        // console.log(response);
+        if(selectedImage !== "") {
+            formData.append("upload_preset", process.env.REACT_APP_UPLOAD_PRESET);
+            const response = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_NAME}/image/upload`, formData);
+            console.log(response);
+        }
+        
+        
+        
+        
 
         try {
             await addProfile({
@@ -48,7 +53,7 @@ const ProfileForm = () => {
  
 
     return (
-        <Card  className='m-5' id="edit-profile">
+        <Card className='m-5' id="edit-profile">
             <Card.Header as="h4" className='p-4' style={{ width: '35rem' }}>Create your Profile</Card.Header>
             <Card.Body className='m-3'>
                 <Form onSubmit={handleSubmit}>
@@ -59,7 +64,7 @@ const ProfileForm = () => {
                     </Form.Group>
                     <Form.Group className='image-upload my-2'>
                         <Form.Label> Upload a picture to display as your avatar! </Form.Label> {'  '}
-                        <Button size="sm" className='mx-2' variant="dark" type="file"> Upload Image </Button>
+                        <Button size="sm" className='mx-2' variant="dark" type="file" onChange={setSelectedImage}> Upload Image </Button>
                     </Form.Group>
                     <Form.Group id="profile-bio-form">
                         <br/>
