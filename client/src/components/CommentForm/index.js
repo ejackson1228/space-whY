@@ -3,6 +3,10 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_COMMENT } from '../../utils/mutations';
 
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
 const CommentForm = ({ inklingId }) => {
   const [commentBody, setBody] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
@@ -34,30 +38,31 @@ const CommentForm = ({ inklingId }) => {
   };
 
   return (
-    <div>
+    <Card className='m-5 p-3'>
       <p
         className={`${characterCount === 400 || error ? 'text-error' : ''}`}
       >
         {characterCount}/400
         {error && <span>Something went wrong...</span>}
       </p>
-      <form
+      <Form
         onSubmit={handleFormSubmit}
       >
-        <textarea
-          placeholder="Let's hear it!"
-          value={commentBody}
-          onChange={handleChange}
-        ></textarea>
-
-        <button type="submit">
+        <Form.Group>
+          <Form.Control as="textarea" rows={1}
+            placeholder="Let's hear it!"
+            value={commentBody}
+            onChange={handleChange}
+          ></Form.Control>
+        </Form.Group>
+        <Button type="submit" variant='dark' className='my-2'>
             {/* maybe replace text with icon */}
           Submit
-        </button>
-      </form>
+        </Button>
+      </Form>
 
       {error && <div>Something went wrong...</div>}
-    </div>
+    </Card>
   );
 };
 
