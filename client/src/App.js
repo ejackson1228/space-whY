@@ -7,6 +7,7 @@ import { setContext } from '@apollo/client/link/context';
 //importing header and footer
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ProfileForm from './components/ProfileEditForm';
 
 //importing pages for page changes
 import Feed from './pages/Feed';
@@ -14,8 +15,11 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import SingleInkling from './pages/SingleInkling';
-import EditProfile from "./pages/EditProfile"
 import NoMatch from './pages/NoMatch';
+
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const httpLink = createHttpLink({
   uri: '/graphql'
@@ -41,39 +45,45 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-           <Header />
-          <div className="container">
-            <Routes>
-              <Route
-                path="/"
-                element={<Feed />}
-              />
-              <Route
-                path="/login"
-                element={<Login />}
-              />
-              <Route
-                path="/signup"
-                element={<Signup />}
-              />
-              <Route
-                path="/profile"
-                element={<Profile />}
-              />
-              <Route
-                path="/inkling/:id"
-                element={<SingleInkling />}
-              />
-              <Route
-                path="*"
-                element={<NoMatch />}
-              />
-              <Route
-              path="/EditProfile"
-              element={<EditProfile/>}
-              />
-            </Routes>
-          </div>
+          <Header />
+          <Container className="d-flex justify-content-center">
+            <Row>
+              <Col>
+                <Routes>
+                  <Route
+                    path="/"
+                    element={<Feed />}
+                  />
+                  <Route
+                    path="/login"
+                    element={<Login />}
+                  />
+                  <Route
+                    path="/signup"
+                    element={<Signup />}
+                  />
+                  <Route
+                    path="/profile"
+                    element={<Profile />}
+                  />
+                  <Route
+                    path="/profileform"
+                    element={<ProfileForm />}
+                  />
+                  <Route
+                    path="/inkling/:id"
+                    element={<SingleInkling />}
+                  />
+                  <Route
+                    path="*"
+                    element={<NoMatch />}
+                  />
+
+                </Routes>
+              </Col>
+            </Row>
+          </Container>
+
           <Footer />
         </div>
       </Router>

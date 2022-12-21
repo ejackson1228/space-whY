@@ -11,7 +11,8 @@ import Col from 'react-bootstrap/Col';
 
 import Auth from "../utils/auth";
 
-// After signup go right to ProfileEdit.js
+// Import ProfileEditForm so that after signup user can be sent right to ProfileEdit.js
+// import ProfileForm from "../components/ProfileEditForm";
 
 const Signup = () => {
     const [formState, setFormState] = useState({
@@ -41,6 +42,9 @@ const Signup = () => {
             });
 
             Auth.login(data.addUser.token);
+
+            // navigate to the edit profile page after signup, syntax questionable
+            // Navigate(ProfileForm);
         } catch (e) {
             console.error(e);
         }

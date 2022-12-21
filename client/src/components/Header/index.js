@@ -29,7 +29,10 @@ function Header({ currentPage, handlePageChange }) {
                   <Nav.Link href="Profile" onClick={() => handlePageChange('Profile')}>Profile</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                <Nav.Link href="/" onClick={logout}>Logout</Nav.Link>
+                  <Nav.Link href="ProfileForm" onClick={() => handlePageChange('ProfileForm')}>Edit Profile</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link href="/" onClick={logout}>Logout</Nav.Link>
                 </Nav.Item>
               </>
             ) : (
