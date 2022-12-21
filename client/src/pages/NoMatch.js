@@ -1,10 +1,11 @@
 import React from 'react';
+import Card from 'react-bootstrap/Card'
 
 const NoMatch = () => {
     return (
-        <div>
+        <Card className='m-5 p-2'>
             Oops, we couldn't find that page.
-        </div>
+        </Card>
     );
 };
 

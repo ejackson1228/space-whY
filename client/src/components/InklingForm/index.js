@@ -6,8 +6,6 @@ import { QUERY_INKLINGS, QUERY_ME } from '../../utils/queries';
 
 //try react-dropbox to implement image viewing before upload
 
-//try react-dropbox to implement image viewing before upload
-
 import Form from 'react-bootstrap/Form'; 
 import Button from 'react-bootstrap/esm/Button';
 
@@ -94,7 +92,7 @@ const InklingForm = () => {
                 onSubmit={handleFormSubmit}
             >
                 <Form.Group className='my-2'>
-                <input type="file" />
+                    <Form.Control as="input" type="file"></Form.Control>
                 </Form.Group>
                 <Form.Group className='my-2'>
                 <Form.Control as="textarea" rows={3}
