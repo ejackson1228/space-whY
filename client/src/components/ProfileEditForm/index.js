@@ -5,7 +5,7 @@ import axios from 'axios';
 import { ADD_PROFILE } from '../../utils/mutations';
 
 
-const profileForm = () => {
+const ProfileEditForm = () => {
     const [addProfile, { error }] = useMutation(ADD_PROFILE);
     const [characterCount, setCharacterCount] = useState(0);
     const [bioBody, setBioBody] = useState("");
@@ -73,19 +73,13 @@ const profileForm = () => {
                         <input type="url" id="profile-instagram" placeholder='your instagram url here...'></input>
                         <input type="url" id="profile-linkedin" placeholder='your linkedin url here...'></input>
                     </div>
-                    <div id='profile-song'>
-                        <h5>If there is a song you'd like to feature on your profile, select one here:</h5>
-                        
-                    </div>
                 </form>
             </div>
         </div>
     )
 };
 
-// considering integrating spotify playback api so that users can enter a song url from spotify and then have the music player on their profilePage
-
-export default profileForm;
+export default ProfileEditForm;
 
 
 // const imgUpload = ({ onChange, src }) => {

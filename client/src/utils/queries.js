@@ -38,6 +38,11 @@ export const QUERY_INKLING = gql`
         username
         commentBody
       }
+      likes {
+        username
+        user_id
+      }
+      likeCount
     }
   }
 `;

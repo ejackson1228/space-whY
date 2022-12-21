@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
 import CommentList from '../components/CommentList';
 import CommentForm from '../components/CommentForm';
 
 import Auth from '../utils/auth';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_INKLING } from '../utils/queries';
+import { ADD_LIKE } from '../utils/mutations';
+import AuthService from '../utils/auth';
 
 const SingleInkling = (props) => {
+    const [addLike, { error }] = useMutation(ADD_LIKE);
+
     const { id: inklingId } = useParams();
 
     const { loading, data } = useQuery(QUERY_INKLING, {
@@ -20,6 +24,26 @@ const SingleInkling = (props) => {
     if (loading) {
         return <div>Loading...</div>
     }
+
+    
+
+    // const HandleLikeSubmit = async (event) => {
+    //     event.preventDefault();
+
+    //     const user = AuthService.getProfile();
+        
+    //     const { id: inklingId } = useParams();
+
+    //     try {
+    //         await addLike({
+    //             variables: {
+    //                 inklingId: inklingId
+    //             }
+    //         })
+    //     } catch (e) {
+    //         console.error(e);
+    //     }
+    // }
 
     return (
         <div>
@@ -37,7 +61,8 @@ const SingleInkling = (props) => {
                     <p>{inkling.inklingText}</p>
                 </div>
             </div>
-
+            <div>This post has: {inkling.likeCount} like(s)</div>
+            <div><button>Like This Post</button></div>
             {inkling.commentCount > 0 && (
                 <CommentList comments={inkling.comments} />
                 )}

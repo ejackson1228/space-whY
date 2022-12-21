@@ -105,3 +105,12 @@ export const ADD_PROFILE = gql `
     }
   }
 `;
+
+export const ADD_LIKE = gql `
+mutation addLike($inklingId: ID!) {
+  addLike(inklingId: $inklingId) {
+    username
+    user_id
+  }
+}
+`
