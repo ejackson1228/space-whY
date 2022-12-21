@@ -16,7 +16,7 @@ const ProfileForm = () => {
     const [addProfile, { error }] = useMutation(ADD_PROFILE);
     const [characterCount, setCharacterCount] = useState(0);
     const [bioBody, setBioBody] = useState("");
-    const [selectedImage, setSelectedImage] = useState("");
+    // const [selectedImage, setSelectedImage] = useState("");
 
     const handleChange = (event) => {
         if (event.target.value.length <= 280) {
@@ -26,14 +26,14 @@ const ProfileForm = () => {
     };
 
     const handleSubmit = async (event) => {
-        const formData = new FormData()
-        formData.append('file', selectedImage);
+        // const formData = new FormData()
+        // formData.append('file', selectedImage);
 
-        if(selectedImage !== "") {
-            formData.append("upload_preset", process.env.REACT_APP_UPLOAD_PRESET);
-            const response = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_NAME}/image/upload`, formData);
-            console.log(response);
-        }
+        // if(selectedImage !== "") {
+        //     formData.append("upload_preset", process.env.REACT_APP_UPLOAD_PRESET);
+        //     const response = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_NAME}/image/upload`, formData);
+        //     console.log(response);
+        // }
         
         
         
@@ -64,7 +64,7 @@ const ProfileForm = () => {
                     </Form.Group>
                     <Form.Group className='image-upload my-2'>
                         <Form.Label> Upload a picture to display as your avatar! </Form.Label> {'  '}
-                        <Button size="sm" className='mx-2' variant="dark" type="file" onChange={setSelectedImage}> Upload Image </Button>
+                        <Button size="sm" className='mx-2' variant="dark" type="file"> Upload Image </Button>
                     </Form.Group>
                     <Form.Group id="profile-bio-form">
                         <br/>
