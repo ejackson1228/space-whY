@@ -90,17 +90,17 @@ const InklingForm = () => {
             <Form
                 onSubmit={handleFormSubmit}
             >
-                <Form.Group>
+                <Form.Group className='my-2'>
                 <input type="file" onChange={(e) => {setSelectedImage(e.target.files[0])}} />
                 </Form.Group>
-                <Form.Group>
+                <Form.Group className='my-2'>
                 <Form.Control as="textarea" rows={3}
                     placeholder='Spread some ink...'
                     value={inklingText}
                     onChange={handleChange}
                 ></Form.Control>
                 </Form.Group>
-                <Button type='submit' variant="dark" >
+                <Button type='submit' variant="dark"  className='my-1'>
                     {/* Maybe replace button text with an icon/symbol? */}
                     Submit
                 </Button>

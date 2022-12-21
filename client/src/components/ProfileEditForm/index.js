@@ -49,18 +49,18 @@ const ProfileForm = () => {
  
 
     return (
-        <Card>
-            <Card.Header>Create your Profile</Card.Header>
-            <Card.Body>
+        <Card  className='m-5' id="edit-profile">
+            <Card.Header as="h4" className='p-4'>Create your Profile</Card.Header>
+            <Card.Body className='m-3'>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="age-verification">
                         <Form.Label>Are you at least 18 years of age?</Form.Label><br/>
-                        <Button type="radio" id="user-age-yes" size="sm"> Yes</Button> {'  '}
-                        <Button type="radio" id="user-age-no" size="sm">No</Button>
+                        <Button type="radio" id="user-age-yes" size="sm" variant="dark"  className='m-2'> Yes</Button> {'  '}
+                        <Button type="radio" id="user-age-no" size="sm" variant="dark">No</Button>
                     </Form.Group>
-                    <Form.Group className='image-upload'>
+                    <Form.Group className='image-upload my-2'>
                         <Form.Label> Upload a picture to display as your avatar! </Form.Label> {'  '}
-                        <Button size="sm" type="file" onChange={(e) => {setSelectedImage(e.target.files[0])}} > Upload Image </Button>
+                        <Button size="sm" className='mx-2' variant="dark" type="file" onChange={(e) => {setSelectedImage(e.target.files[0])}} > Upload Image </Button>
                     </Form.Group>
                     <Form.Group id="profile-bio-form">
                         <br/>
@@ -89,7 +89,7 @@ const ProfileForm = () => {
                         <Form.Control as="textarea"id="profile-linkedin" placeholder='your linkedin url here...'></Form.Control>
                     </Form.Group>
                     <br/>
-                    <Button type="submit">Save Changes</Button>
+                    <Button variant="dark" type="submit">Save Changes</Button>
                     {/* 
                         **Iceboxed Feature**
                     <div id='profile-song'>
