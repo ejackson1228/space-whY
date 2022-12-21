@@ -1,5 +1,14 @@
 space whY presents Inkling.
 
+<br>
+
+<img src="client/src/assets/images/Inkling-screenshot.jpg" alt="Inkling App" width="600px" height="350px">
+<br>
+<br>
+<a href="https://salty-wave-70415.herokuapp.com/">Visit the App!</a>
+
+<br>
+
 Inkling is a social media app created with the user in mind first to share ideas, art, links... etc. This site uses GraphQL, Node.js, Express.JS. MongoDB, Mongoose ODM, Queries/Mutations, Heroku, and Cloudinary/Axios as its technologies. 
 
 Why did we build this site?

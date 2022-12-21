@@ -28,11 +28,16 @@ const ProfileForm = () => {
     const handleSubmit = async (event) => {
         // const formData = new FormData()
         // formData.append('file', selectedImage);
-        // formData.append("upload_preset", process.env.REACT_APP_UPLOAD_PRESET);
-        
-        // const response = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_NAME}/image/upload`, formData);
 
-        // console.log(response);
+        // if(selectedImage !== "") {
+        //     formData.append("upload_preset", process.env.REACT_APP_UPLOAD_PRESET);
+        //     const response = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_NAME}/image/upload`, formData);
+        //     console.log(response);
+        // }
+        
+        
+        
+        
 
         try {
             await addProfile({
@@ -48,7 +53,7 @@ const ProfileForm = () => {
  
 
     return (
-        <Card  className='m-5' id="edit-profile">
+        <Card className='m-5' id="edit-profile">
             <Card.Header as="h4" className='p-4' style={{ width: '35rem' }}>Create your Profile</Card.Header>
             <Card.Body className='m-3'>
                 <Form onSubmit={handleSubmit}>
