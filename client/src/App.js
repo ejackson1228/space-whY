@@ -7,6 +7,7 @@ import { setContext } from '@apollo/client/link/context';
 //importing header and footer
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ProfileForm from './components/ProfileEditForm';
 
 //importing pages for page changes
 import Feed from './pages/Feed';
@@ -14,7 +15,6 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import SingleInkling from './pages/SingleInkling';
-import EditProfile from "./pages/EditProfile"
 import NoMatch from './pages/NoMatch';
 
 const httpLink = createHttpLink({
@@ -61,6 +61,10 @@ function App() {
                 element={<Profile />}
               />
               <Route
+                path="/profileform"
+                element={<ProfileForm />}
+              />
+              <Route
                 path="/inkling/:id"
                 element={<SingleInkling />}
               />
@@ -68,10 +72,7 @@ function App() {
                 path="*"
                 element={<NoMatch />}
               />
-              <Route
-              path="/EditProfile"
-              element={<EditProfile/>}
-              />
+            
             </Routes>
           </div>
           <Footer />

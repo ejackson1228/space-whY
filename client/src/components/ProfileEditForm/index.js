@@ -5,7 +5,7 @@ import axios from 'axios';
 import { ADD_PROFILE } from '../../utils/mutations';
 
 
-const profileForm = () => {
+const ProfileForm = () => {
     const [addProfile, { error }] = useMutation(ADD_PROFILE);
     const [characterCount, setCharacterCount] = useState(0);
     const [bioBody, setBioBody] = useState("");
@@ -85,7 +85,6 @@ const profileForm = () => {
 
 // considering integrating spotify playback api so that users can enter a song url from spotify and then have the music player on their profilePage
 
-export default profileForm;
 
 
 // const imgUpload = ({ onChange, src }) => {
@@ -116,3 +115,5 @@ export default profileForm;
     //     }
     //     reader.readAsDataURL(file);
     // }
+
+export default ProfileForm;

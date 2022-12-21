@@ -1,12 +1,12 @@
 // import React from "react";
-// import ProfileEditForm from '../components/ProfileEditForm';
+// import ProfileForm from '../components/ProfileEditForm';
 
 // function EditProfile(){
 //     return(
 //         <div>
 //         <main>
-//         <h1>Edit EditProfile</h1>
-//         <ProfileEditForm></ProfileEditForm>
+//         <h1>Edit Profile</h1>
+//         <ProfileForm></ProfileForm>
 //         </main>
       
 //         </div>
