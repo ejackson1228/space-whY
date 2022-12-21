@@ -54,15 +54,16 @@ const ProfileForm = () => {
             <Card.Body>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="age-verification">
-                        <Form.Label>Are you at least 18 years of age?</Form.Label>
-                        <Button type="radio" id="user-age-yes">Yes</Button>
-                        <Button type="radio" id="user-age-no">No</Button>
+                        <Form.Label>Are you at least 18 years of age?</Form.Label><br/>
+                        <Button type="radio" id="user-age-yes" size="sm"> Yes</Button> {'  '}
+                        <Button type="radio" id="user-age-no" size="sm">No</Button>
                     </Form.Group>
                     <Form.Group className='image-upload'>
-                        <Form.Label> Upload a picture to display as your avatar! </Form.Label>
-                        <Button type="file" onChange={(e) => {setSelectedImage(e.target.files[0])}} />
+                        <Form.Label> Upload a picture to display as your avatar! </Form.Label> {'  '}
+                        <Button size="sm" type="file" onChange={(e) => {setSelectedImage(e.target.files[0])}} > Upload Image </Button>
                     </Form.Group>
                     <Form.Group id="profile-bio-form">
+                        <br/>
                         <p className={`${characterCount === 280 ? 'text-error' : ''}`}>Character Count: {characterCount}/280</p>
                         <Form.Label>Write a short bio:</Form.Label>
                         <Form.Control 
@@ -70,16 +71,25 @@ const ProfileForm = () => {
                         placeholder='Write something about yourself...'
                         onChange={handleChange}
                         value={bioBody}
-                        ></Form.Control>
+                        >      
+                        </Form.Control>
                     </Form.Group>
+                    <br/>
                     <Form.Group id="profile-linktree">
                         <Form.Label>If there are links you'd like to share on your profile, please paste the URL here:</Form.Label>
+                        <br/>
                         <Form.Control as="textarea" id="profile-twitter" placeholder='your twitter url here...'></Form.Control>
+                        <br/>
                         <Form.Control as="textarea" id="profile-facebook" placeholder='your facebook url here...'></Form.Control>
+                        <br/>
                         <Form.Control as="textarea" id="profile-github" placeholder='your github url here...'></Form.Control>
+                        <br/>
                         <Form.Control as="textarea" id="profile-instagram" placeholder='your instagram url here...'></Form.Control>
+                        <br/>
                         <Form.Control as="textarea"id="profile-linkedin" placeholder='your linkedin url here...'></Form.Control>
                     </Form.Group>
+                    <br/>
+                    <Button type="submit">Save Changes</Button>
                     {/* 
                         **Iceboxed Feature**
                     <div id='profile-song'>
