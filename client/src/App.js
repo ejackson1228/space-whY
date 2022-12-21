@@ -17,6 +17,10 @@ import Profile from './pages/Profile';
 import SingleInkling from './pages/SingleInkling';
 import NoMatch from './pages/NoMatch';
 
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 const httpLink = createHttpLink({
   uri: '/graphql'
 });
@@ -41,40 +45,45 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-           <Header />
-          <div className="container my-5">
-            <Routes>
-              <Route
-                path="/"
-                element={<Feed />}
-              />
-              <Route
-                path="/login"
-                element={<Login />}
-              />
-              <Route
-                path="/signup"
-                element={<Signup />}
-              />
-              <Route
-                path="/profile"
-                element={<Profile />}
-              />
-              <Route
-                path="/profileform"
-                element={<ProfileForm />}
-              />
-              <Route
-                path="/inkling/:id"
-                element={<SingleInkling />}
-              />
-              <Route
-                path="*"
-                element={<NoMatch />}
-              />
-            
-            </Routes>
-          </div>
+          <Header />
+          <Container className="d-flex justify-content-center">
+            <Row>
+              <Col>
+                <Routes>
+                  <Route
+                    path="/"
+                    element={<Feed />}
+                  />
+                  <Route
+                    path="/login"
+                    element={<Login />}
+                  />
+                  <Route
+                    path="/signup"
+                    element={<Signup />}
+                  />
+                  <Route
+                    path="/profile"
+                    element={<Profile />}
+                  />
+                  <Route
+                    path="/profileform"
+                    element={<ProfileForm />}
+                  />
+                  <Route
+                    path="/inkling/:id"
+                    element={<SingleInkling />}
+                  />
+                  <Route
+                    path="*"
+                    element={<NoMatch />}
+                  />
+
+                </Routes>
+              </Col>
+            </Row>
+          </Container>
+
           <Footer />
         </div>
       </Router>

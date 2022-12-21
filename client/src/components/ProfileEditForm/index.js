@@ -50,7 +50,7 @@ const ProfileForm = () => {
 
     return (
         <Card  className='m-5' id="edit-profile">
-            <Card.Header as="h4" className='p-4'>Create your Profile</Card.Header>
+            <Card.Header as="h4" className='p-4' style={{ width: '35rem' }}>Create your Profile</Card.Header>
             <Card.Body className='m-3'>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="age-verification">
