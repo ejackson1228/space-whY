@@ -34,7 +34,7 @@ const Feed = () => {
                     ) : (
                         <div>
 
-                            <Card style={{ width: '30rem' }}>
+                            <Card style={{ width: '30rem' }} >
                                 <Card.Img variant="top" src={logo} />
                                 <Card.Text>
                                     Uh Oh! You are not logged in! In order to checkout this Weeks Ink please login.

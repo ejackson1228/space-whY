@@ -53,11 +53,11 @@ const Login = (props) => {
                 {/* div to set up card */}
                 <div>
                     {/* // Login Form: This will be the default page unless logged in // */}
-                    <Card>
-                        <Card.Header as="h4">Login </Card.Header>
+                    <Card style={{ width: '30rem' }} className='m-5'>
+                        <Card.Header as="h4" className="d-flex justify-content-center">Login </Card.Header>
                         {/* div to set up card body */}
 
-
+                        <Card.Body className='m-3'>
                         <Form onSubmit={handleFormSubmit}>
                         <Form.Group className="mb-3">
                             <Form.Label>Email:</Form.Label>
@@ -84,16 +84,19 @@ const Login = (props) => {
                                 onChange={handleChange}
                             />
                              </Form.Group>
+                             <Form.Group className="d-flex justify-content-center" >
                             <Button variant="dark" type="submit">
                                 {/* cute icon instead of submit text? */}
                                 Submit
                             </Button>
+                            </Form.Group>
+                            <br/>
                         </Form>
-
+                        </Card.Body>
                         {error && <div>Login failed</div>}
 
                         {/* Link to Signup */}
-                        <Card.Footer className="text-muted">
+                        <Card.Footer className="text-muted d-flex justify-content-center">
                         Don't have an account yet?
                         <Link to="/signup">Sign Up</Link>
                         </Card.Footer>

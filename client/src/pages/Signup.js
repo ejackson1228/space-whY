@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form'
 import Card from 'react-bootstrap/Card';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 import Auth from "../utils/auth";
 
@@ -58,70 +56,73 @@ const Signup = () => {
                     {/* div to set up card */}
                     <div>
 
-                        <Card className="col-md-10 mx-auto">
-                            <Card.Header as="h4">Sign Up </Card.Header>
+                        <Card style={{ width: '30rem' }} className='m-5' >
+                            <Card.Header as="h4" className="d-flex justify-content-center">Sign Up </Card.Header>
                             {/* div to set up card body */}
 
-                            <div>
+                            <Card.Body className='m-3'>
                                 <Form onSubmit={handleFormSubmit}>
 
-                                <Form.Group as={Row} className="mb-3">
-                                    <Form.Label column sm={3}>  Username: </Form.Label>
-                                    <Col sm={7}>
-                                    <Form.Control
-                                        className="form-input"
-                                        placeholder="Your username"
-                                        name="username"
-                                        type="username"
-                                        id="username"
-                                        value={formState.username}
-                                        onChange={handleChange}
-                                    />
-                                    </Col>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>  Username: </Form.Label>
+
+                                        <Form.Control
+                                            className="form-input"
+                                            placeholder="Your username"
+                                            name="username"
+                                            type="username"
+                                            id="username"
+                                            value={formState.username}
+                                            onChange={handleChange}
+                                        />
+
                                     </Form.Group>
 
-                                    <Form.Group as={Row} className="mb-4" >
-                                    <Form.Label column sm={3}>Email:</Form.Label>
-                                    <Col sm={7}>
-                                    <Form.Control
-                                        className="form-input"
-                                        placeholder="Your email"
-                                        name="email"
-                                        type="email"
-                                        id="email"
-                                        value={formState.email}
-                                        onChange={handleChange}
-                                    />
-                                    </Col>
+                                    <Form.Group className="mb-4" >
+                                        <Form.Label>Email:</Form.Label>
+
+                                        <Form.Control
+                                            className="form-input"
+                                            placeholder="Your email"
+                                            name="email"
+                                            type="email"
+                                            id="email"
+                                            value={formState.email}
+                                            onChange={handleChange}
+                                        />
+
                                     </Form.Group>
 
-                                    <Form.Group as={Row} className="mb-3">
-                                    <Form.Label column sm={3}>Password:</Form.Label>
-                                    <Col sm={7}>
-                                    <Form.Control
-                                        className="form-input"
-                                        placeholder="******"
-                                        name="password"
-                                        type="password"
-                                        id="password"
-                                        value={formState.password}
-                                        onChange={handleChange}
-                                    />
-                                    </Col>
-                                    </Form.Group>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label >Password:</Form.Label>
 
-                                    <Button variant="dark" type="submit">
-                                        Submit
-                                    </Button>
+                                        <Form.Control
+                                            className="form-input"
+                                            placeholder="******"
+                                            name="password"
+                                            type="password"
+                                            id="password"
+                                            value={formState.password}
+                                            onChange={handleChange}
+                                        />
+
+                                    </Form.Group>
+                                    <Form.Group className="d-flex justify-content-center" >
+                                        <Button variant="dark" type="submit">
+                                            Submit
+                                        </Button>
+
+                                    </Form.Group>
+                                    <br />
                                 </Form>
 
 
                                 {error && <div>Signup failed</div>}
 
-                            </div>
-                            <Card.Footer className="text-muted">
+                            </Card.Body>
+                            <Card.Footer className="text-muted d-flex justify-content-center">
                                 Have an account yet?
-                                <Link to="/login"> Login</Link>
+                                <Link to="/login">{'  '}Login</Link>
                             </Card.Footer>
                         </Card>
                     </div>
